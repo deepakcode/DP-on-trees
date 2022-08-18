@@ -166,3 +166,45 @@ This question can be solved using BFS/level order as well.
 
 <img width="932" alt="Screenshot 2022-08-18 at 5 14 31 PM" src="https://user-images.githubusercontent.com/13814143/185387616-ade03f29-3dd2-4ea1-9985-7a2645bfd083.png">
 
+### 3 You are given a tree consisting of n nodes.
+
+A matching is a set of edges where each node is an endpoint of at most one edge. What is the maximum number of edges in a matching?
+
+Input
+
+The first input line contains an integer n: the number of nodes. The nodes are numbered 1,2,…,n.
+
+Then there are n−1 lines describing the edges. Each line contains two integers a and b: there is an edge between nodes a and b.
+
+Output
+
+Print one integer: the maximum number of pairs.
+
+Constraints
+1≤n≤2⋅105
+1≤a,b≤n
+Example
+
+Input:
+5
+1 2
+1 3
+3 4
+3 5
+
+Output:
+2
+
+Explanation: One possible matching is (1,2) and (3,4).
+
+<img width="527" alt="Screenshot 2022-08-18 at 6 12 00 PM" src="https://user-images.githubusercontent.com/13814143/185397359-9f742153-f5d5-43c7-92d2-2d7ac24c0691.png">
+
+Solution : 
+
+#### if not select root node then this case 
+#### if root is selected then this case - 
+
+<img width="315" alt="Screenshot 2022-08-18 at 6 06 08 PM" src="https://user-images.githubusercontent.com/13814143/185397838-d978d416-2656-457e-9cf3-5bf5c4dbad1d.png">
+
+
+
