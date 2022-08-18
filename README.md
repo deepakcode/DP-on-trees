@@ -1,8 +1,6 @@
 # DP-on-trees
 
-### 
-
-Given a tree with N nodes and N-1 edges, calculate the maximum sum of the node values from root to any of the leaves without re-visiting any node. 
+### 1 Given a tree with N nodes and N-1 edges, calculate the maximum sum of the node values from root to any of the leaves without re-visiting any node. 
 
 ![image](https://user-images.githubusercontent.com/13814143/185197407-55d15ee2-d1d0-44dc-a5e0-5202f1e5be7f.png)
 
@@ -82,4 +80,75 @@ class TreeDP01
         System.out.println(maximumValue(a, tree));
     }
 }
+```
+
+ 
+### 2 Given the structure of a company, your task is to calculate for each employee the number of their subordinates.
+
+Input
+
+The first input line has an integer n: the number of employees. The employees are numbered 1,2,…,n, and employee 1 is the general director of the company.
+
+After this, there are n−1 integers: for each employee 2,3,…,n their direct boss in the company.
+
+Output
+
+Print n integers: for each employee 1,2,…,n the number of their subordinates.
+
+Constraints
+1≤n≤2⋅105
+Time limit: 1.00 s
+Memory limit: 512 MB
+
+Example
+
+Input:
+5
+1 1 2 3
+
+Output:
+4 1 1 0 0
+
+```java
+package com.practice;
+import java.util.LinkedList;
+
+class TreeDP01 {
+    
+    static int[] dp = new int[100];
+
+    static void dfs(LinkedList<Integer>[] tree, int node, int parent) {
+        dp[node-1] = 1;
+        int count=0;
+        for (int child : tree[node]) {
+            if(child==parent)
+                continue;
+            dfs(tree,child,node);
+            dp[node-1] = dp[node-1] + dp[child-1];
+        }
+    }
+
+    //use DFS here
+    static void countSubOrdinate(LinkedList<Integer>[] tree){
+        dfs(tree, 1, 0);
+        for(int i=0; i<5 ; i++){
+            System.out.print((i+1)+"-"+(dp[i]-1)+" \n");
+        }
+    }
+
+    public static void main(String[] args){
+        int n = 14;
+        LinkedList<Integer>[] tree = new LinkedList[n + 1];
+        for (int i = 0; i < tree.length; i++)
+            tree[i] = new LinkedList<>();
+
+        tree[1].add(2); tree[2].add(1);
+        tree[1].add(3); tree[3].add(1);
+        tree[2].add(4); tree[4].add(2);
+        tree[3].add(5); tree[5].add(3);
+
+        countSubOrdinate(tree);
+    }
+}
+
 ```
