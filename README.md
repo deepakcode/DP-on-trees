@@ -1,4 +1,4 @@
-# DP-on-trees
+# DP-on-trees (Personal notes)
 
 ### 1 Given a tree with N nodes and N-1 edges, calculate the maximum sum of the node values from root to any of the leaves without re-visiting any node. 
 
