@@ -166,9 +166,9 @@ This question can be solved using BFS/level order as well.
 
 <img width="932" alt="Screenshot 2022-08-18 at 5 14 31 PM" src="https://user-images.githubusercontent.com/13814143/185387616-ade03f29-3dd2-4ea1-9985-7a2645bfd083.png">
 
-### 3 You are given a tree consisting of n nodes.
+### 3 You are given a tree consisting of n nodes.A matching is a set of edges where each node is an endpoint of at most one edge. What is the maximum number of edges in a matching?
 
-A matching is a set of edges where each node is an endpoint of at most one edge. What is the maximum number of edges in a matching?
+https://cses.fi/problemset/task/1130
 
 Input
 
@@ -186,11 +186,16 @@ Constraints
 Example
 
 Input:
+
 5
-1 2
-1 3
-3 4
-3 5
+
+1  2
+
+1  3
+
+3  4
+
+3  5
 
 Output:
 2
