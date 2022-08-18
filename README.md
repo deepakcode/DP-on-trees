@@ -115,6 +115,9 @@ Output:
 
 <img width="1107" alt="Screenshot 2022-08-18 at 5 08 50 PM" src="https://user-images.githubusercontent.com/13814143/185386190-b8602f7e-2e7f-4b7b-9e7b-6b96cfee156b.png">
 
+![visualization](https://user-images.githubusercontent.com/13814143/185389209-2b6688ec-14cc-49cb-8371-41087356e061.gif)
+
+
 ```java
 package com.practice;
 import java.util.LinkedList;
