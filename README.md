@@ -109,6 +109,14 @@ Input:
 Output:
 4 1 1 0 0
 
+
+**logic : In DFS while going down assing 1 to each node, while coming back start counting and sum up the value assinged (1).**
+
+This question can be solved using BFS/level order as well. 
+
+<img width="1107" alt="Screenshot 2022-08-18 at 5 08 50 PM" src="https://user-images.githubusercontent.com/13814143/185386190-b8602f7e-2e7f-4b7b-9e7b-6b96cfee156b.png">
+
+
 ```java
 package com.practice;
 import java.util.LinkedList;
