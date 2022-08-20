@@ -390,7 +390,7 @@ public class Main {
     }
     int q = Integer.parseInt(read.readLine());
     // write your code here
-build(parent);
+    build(parent);
 
         while (q-- > 0) {
             String inp[] = read.readLine().split(" ");
