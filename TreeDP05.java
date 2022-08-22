@@ -29,7 +29,7 @@ public class TreeDP05 {
         table = new int[MAXBIT + 1][n + 1];
         table[0] = parent;
         for (int r = 1; r <= MAXBIT; r++) {
-            for (int i = 1; i < n; i++) {
+            for (int i = 1; i <= n; i++) {
                 int p = table[r - 1][i];
                 table[r][i] = table[r - 1][p];
             }
