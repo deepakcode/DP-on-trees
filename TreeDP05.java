@@ -13,8 +13,29 @@ public class TreeDP05 {
     use in for reading input
     use out for printing output
     */
-    static int parent[], jump[];
+    static int parent[], jump[], table[][];
     static boolean[] occupied;
+    static int MAXBIT = 18;
+
+    static void setBit(int n) {
+        MAXBIT = 0;
+        while ((1 << MAXBIT) <= n) {
+            MAXBIT++;
+        }
+        MAXBIT--;
+    }
+
+    static void build(int n) {
+        table = new int[MAXBIT + 1][n + 1];
+        table[0] = parent;
+        for (int r = 1; r <= MAXBIT; r++) {
+            for (int i = 1; i < n; i++) {
+                int p = table[r - 1][i];
+                table[r][i] = table[r - 1][p];
+            }
+        }
+    }
+
     static int cal(int c) {
         int curr = jump[c];
         if (occupied[curr])
@@ -22,7 +43,9 @@ public class TreeDP05 {
 
         int j = 1;
 
-        while (true) {
+
+        //below code is not optimised
+        /*while (true) {
             int p = parent[curr];
             if (occupied[p] == false) {
                 j++;
@@ -30,7 +53,18 @@ public class TreeDP05 {
             } else {
                 break;
             }
+        }*/
+
+        for (int i = MAXBIT; i >= 0; i--) {
+            int jp = table[i][curr];// 2^j parent of curr
+
+            if (occupied[jp]) {
+            } else {
+                curr = jp;
+                j += 1 << i;
+            }
         }
+
         occupied[curr] = true;
         return j;
     }
@@ -38,6 +72,7 @@ public class TreeDP05 {
     public static void main(String[] args) throws IOException {
         // write your code here.
         int n = Integer.parseInt(in.readLine());
+        setBit(n);
         parent = new int[n + 1];// 1 ... n
         String inp[] = in.readLine().split(" ");
         for (int i = 0; i < n; i++) {
@@ -52,6 +87,7 @@ public class TreeDP05 {
             int j = Integer.parseInt(inp[i]);
             jump[i + 1] = j;
         }
+        build(n);
         for (int i = 1; i <= n; i++) {
             int jumps = cal(i);
             out.println(jumps);
