@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class TreeDP06 {
 
-   static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter out = new PrintWriter(System.out);
     //use in for reading input
     //use out for printing output
@@ -31,6 +31,9 @@ public class TreeDP06 {
     static Pair[] upperCeil;
 
     static int cal(int u, int w) {
+
+        if(w >= upperCeil[u] .max)return 0;
+
         int curr = u;
 
         /*while (true) {
