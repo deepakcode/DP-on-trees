@@ -8,19 +8,39 @@ import java.io.PrintWriter;
 public class TreeDP07 {
 
     //Longest Good Segment
-    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+   static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter out = new PrintWriter(System.out);
     /*
     use in for reading input
     use out for printing output
     */
 
+    static int MAXBIT = 20;
+    static int table[][];
     static int[] minStart;
+
+    static void build(int n){
+        table = new int[MAXBIT][n];
+        table[0] = minStart;
+        for(int j=1;j<MAXBIT;j ++){
+            for(int i=0;i<n;i ++){
+                int par = table[j-1][i];
+                table[j][i] = par == -1 ? par: table[j-1][par];
+            }
+        }
+    }
 
     static int cal(int max, int k) {
         int min = max;
-        for (int i = 1; i <= k && min > -1; i++) {
+       /* for (int i = 1; i <= k && min > -1; i++) {
             min = minStart[min];
+        }*/
+
+        for(int i=MAXBIT;i>=0 && min > -1;i--){
+            int mask = 1<< i;
+            if((mask & k) > 0){
+                    min = table[i][min];
+            }
         }
         return max - min;
     }
@@ -41,6 +61,7 @@ public class TreeDP07 {
             }
             minStart[i] = j - 1;
         }
+        build(n);
         int max = 0;
         for (int i = nums.length - 1; i >= 0; i--) {
             max = Math.max(max, cal(i, k));
