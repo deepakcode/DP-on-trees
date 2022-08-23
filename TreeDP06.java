@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class TreeDP06 {
 
-    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+   static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter out = new PrintWriter(System.out);
     //use in for reading input
     //use out for printing output
@@ -26,17 +26,29 @@ public class TreeDP06 {
     static int[] value;
     static int[] parent;
     static ArrayList<Integer>[] childs;
-
+    static int[][] table;
+    static int MAXBIT = 19;
     static Pair[] upperCeil;
 
     static int cal(int u, int w) {
         int curr = u;
-        while (true) {
+
+        /*while (true) {
             int p = parent[curr];
             curr = p;
             if (upperCeil[p].max <= w)
                 break;
+        }*/
+
+        for(int i=MAXBIT; i>=0;i--) {
+            int p = table[i][curr];
+            if (upperCeil[p].max > w) {
+                curr = p;
+            }
         }
+
+        curr = parent[curr];
+
         return upperCeil[u].count - upperCeil[curr].count;
     }
 
@@ -49,6 +61,17 @@ public class TreeDP06 {
 
         for (int c : childs[node]) {
             dfs(c, max, count);
+        }
+    }
+
+    static void build(int n) {
+        table = new int[MAXBIT+1][n + 1];
+        table[0] = parent;
+        for (int b = 1; b <= MAXBIT; b++) {
+            for (int i = 1; i <= n; i++) {
+                int p = table[b - 1][i];
+                table[b][i] = table[b - 1][p];
+            }
         }
     }
 
@@ -81,6 +104,8 @@ public class TreeDP06 {
         upperCeil = new Pair[n + 1];
         upperCeil[0] = new Pair(0, 0);
         dfs(1, 0, 0);
+
+        build(n);
 
         int pr = 0;
         int q = Integer.parseInt(in.readLine());
